@@ -1,0 +1,119 @@
+{
+    "geometry": [
+        {
+            "mesh": "wave.msh",
+            "transformation": {
+                "translation": [
+                    0,
+                    0
+                ],
+                "rotation": 0,
+                "scale": [
+                    2,
+                    1
+                ]
+            },
+            "volume_selection": 3,
+            "surface_selection": 3,
+            "n_refs": 0,
+            "advanced": {
+                "normalize_mesh": false
+            }
+        },
+        {
+            "mesh": "puzzle.msh",
+            "transformation": {
+                "translation": [
+                    -1,
+                    0.2
+                ],
+                "rotation": 0,
+                "scale": 0.001
+            },
+            "volume_selection": 1,
+            "surface_selection": 1,
+            "n_refs": 0,
+            "advanced": {
+                "normalize_mesh": false
+            }
+        }
+    ],
+    "space": {
+        "discr_order": 1,
+        "advanced": {
+            "quadrature_order": 5
+        }
+    },
+    "time": {
+        "tend": 0.6,
+        "dt": 0.02
+    },
+    "contact": {
+        "enabled": true,
+        "friction_coefficient": 0.5
+    },
+    "solver": {
+        "contact": {
+            "barrier_stiffness": 100000.0
+        }
+    },
+    "boundary_conditions": {
+        "rhs": [
+            0,
+            9.8
+        ],
+        "dirichlet_boundary": [
+            {
+                "id": 3,
+                "value": [
+                    0,
+                    0
+                ]
+            }
+        ]
+    },
+    "initial_conditions": {
+        "velocity": [
+            {
+                "id": 1,
+                "value": [
+                    2,
+                    1
+                ]
+            }
+        ]
+    },
+    "materials": [
+        {
+            "id": 1,
+            "E": 1000000.0,
+            "nu": 0.3,
+            "rho": 1000,
+            "type": "NeoHookean"
+        },
+        {
+            "id": 3,
+            "E": 1000000.0,
+            "nu": 0.3,
+            "rho": 1000,
+            "type": "NeoHookean"
+        }
+    ],
+    "output": {
+        "log": {
+            "level": "info"
+        },
+        "paraview": {
+            "file_name": "sim.pvd",
+            "high_order_mesh": false,
+            "options": {
+                "body_ids": true
+            },
+            "vismesh_rel_area": 1
+        },
+        "advanced": {
+            "save_time_sequence": true
+        },
+        "directory": "result-target"
+    }
+}

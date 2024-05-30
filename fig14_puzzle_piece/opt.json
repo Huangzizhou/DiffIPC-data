@@ -1,0 +1,61 @@
+{
+    "variable_to_simulation": [
+        {
+            "type": "initial",
+            "state": 0,
+            "composition": [{
+                "type": "per-body-to-per-node",
+                "state": 0
+            },{
+                "type": "append-const",
+                "start": 0,
+                "size": 740,
+                "value": 0
+            }]
+        }
+    ],
+    "solver": {
+        "nonlinear": {
+            "line_search": {
+                "method": "Backtracking"
+            },
+            "solver": "L-BFGS",
+            "max_iterations": 50,
+            "grad_norm": 1e-4
+        }
+    },
+    "output": {
+        "log": {
+            "level": "trace"
+        }
+    },
+    "parameters": [
+        {
+            "number": 4,
+            "initial": [0, 0, 0.5, 0]
+        }
+    ],
+    "functionals": [
+        {
+            "type": "transient_integral",
+            "state": 0,
+            "weight": 10,
+            "static_objective": 
+            {
+                "type": "target",
+                "state": 0,
+                "target_state": 1,
+                "matching": "exact",
+                "surface_selection": [1]
+            }
+        }
+    ],
+    "states": [
+        {
+            "path": "run-new.json"
+        },
+        {
+            "path": "target-new.json"
+        }
+    ]
+}

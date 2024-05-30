@@ -1,0 +1,181 @@
+{
+    "geometry": [
+        {
+            "mesh": "micro_denser.msh",
+            "transformation": {
+                "scale": 0.033
+            },
+            "volume_selection": 10,
+            "surface_selection": [
+                {
+                    "id": 14,
+                    "box": [
+                        [
+                            -1,
+                            -1,
+                            0.045
+                        ],
+                        [
+                            1,
+                            1,
+                            0.0487
+                        ]
+                    ]
+                },
+                {
+                    "id": 13,
+                    "axis": "-z",
+                    "position": -0.046
+                }
+            ]
+        },
+        {
+            "mesh": "unit-cube.msh",
+            "transformation": {
+                "translation": [
+                    -0.033,
+                    -0.033,
+                    0.047
+                ],
+                "scale": [
+                    0.066,
+                    0.066,
+                    0.0019
+                ]
+            },
+            "volume_selection": 11,
+            "surface_selection": [
+                {
+                    "id": 14,
+                    "box": [
+                        [
+                            -1,
+                            -1,
+                            0.045
+                        ],
+                        [
+                            1,
+                            1,
+                            0.0487
+                        ]
+                    ]
+                },
+                {
+                    "id": 12,
+                    "axis": "z",
+                    "position": 0.0488
+                },
+                {
+                    "id": 13,
+                    "axis": "-z",
+                    "position": -0.046
+                }
+            ]
+        }
+    ],
+    "space": {
+        "discr_order": 1,
+        "advanced": {
+            "bc_method": "sample",
+            "quadrature_order": 5
+        }
+    },
+    "contact": {
+        "enabled": true,
+        "dhat": 0.0002
+    },
+    "solver": {
+        "linear": {
+            "solver": "Eigen::PardisoLDLT"
+        },
+        "nonlinear": {
+            "grad_norm": 1e-4,
+            "line_search": {
+                "method": "Backtracking",
+                "min_step_size": 1e-20,
+                "max_step_size_iter": 100
+            }
+        },
+        "contact": {
+            "barrier_stiffness": 1e6
+        }
+    },
+    "boundary_conditions": {
+        "dirichlet_boundary": [
+            {
+                "id": 13,
+                "value": [
+                    0,
+                    0,
+                    0
+                ]
+            },
+            {
+                "id": 12,
+                "value": [
+                    0,
+                    0,
+                    0
+                ],
+                "dimension": [
+                    true,
+                    true,
+                    false
+                ]
+            },
+            {
+                "id": 14,
+                "value": [
+                    0,
+                    0,
+                    0
+                ],
+                "dimension": [
+                    true,
+                    true,
+                    false
+                ]
+            }
+        ],
+        "neumann_boundary": [
+            {
+                "id": 12,
+                "value": [
+                    0,
+                    0,
+                    -2812
+                ]
+            }
+        ]
+    },
+    "materials": [
+        {
+            "id": 10,
+            "E": 1e6,
+            "nu": 0.3,
+            "type": "NeoHookean"
+        },
+        {
+            "id": 11,
+            "E": 1e9,
+            "nu": 0.2,
+            "type": "NeoHookean"
+        }
+    ],
+    "output": {
+        "directory": "result",
+        "log": {
+            "level": "debug"
+        },
+        "paraview": {
+            "high_order_mesh": false,
+            "volume": true,
+            "surface": true,
+            "options": {
+                "material": true,
+                "body_ids": true
+            },
+            "vismesh_rel_area": 1
+        }
+    }
+}

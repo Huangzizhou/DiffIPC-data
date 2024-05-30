@@ -1,0 +1,142 @@
+{
+    "geometry": [
+        {
+            "mesh": "bridge.msh",
+            "volume_selection": 0,
+            "n_refs": 0,
+            "surface_selection": [
+                {
+                    "id": 10,
+                    "box": [
+                        [
+                            -1.00001,
+                            -0.02
+                        ],
+                        [
+                            -0.9999,
+                            0.027
+                        ]
+                    ]
+                },
+                {
+                    "id": 10,
+                    "box": [
+                        [
+                            0.9999,
+                            -0.02
+                        ],
+                        [
+                            1.00001,
+                            0.027
+                        ]
+                    ]
+                },
+                {
+                    "id": 11,
+                    "box": [
+                        [
+                            -0.6766,
+                            0.0
+                        ],
+                        [
+                            -0.6566,
+                            0.1
+                        ]
+                    ]
+                },
+                {
+                    "id": 11,
+                    "box": [
+                        [
+                            -0.01,
+                            0.0
+                        ],
+                        [
+                            0.01,
+                            0.1
+                        ]
+                    ]
+                },
+                {
+                    "id": 11,
+                    "box": [
+                        [
+                            0.6566,
+                            0.0
+                        ],
+                        [
+                            0.6766,
+                            0.1
+                        ]
+                    ]
+                },
+                {
+                    "id": 0,
+                    "box": [
+                        [
+                            -100,
+                            -100
+                        ],
+                        [
+                            100,
+                            100
+                        ]
+                    ]
+                }
+            ]
+        }
+    ],
+    "space": {
+        "discr_order": 2,
+        "advanced": {
+            "quadrature_order": 5
+        }
+    },
+    "solver": {
+        "max_threads": 16,
+        "linear": {
+            "solver": "Eigen::PardisoLDLT"
+        }
+    },
+    "boundary_conditions": {
+        "rhs": [
+            0,
+            0
+        ],
+        "dirichlet_boundary": [
+            {
+                "id": 10,
+                "value": [
+                    0,
+                    0
+                ]
+            }
+        ],
+        "neumann_boundary": [
+            {
+                "id": 11,
+                "value": [
+                    0,
+                    "-0.1/0.0206065848"
+                ]
+            }
+        ]
+    },
+    "materials": {
+        "type": "LinearElasticity",
+        "E": 200.0,
+        "nu": 0.35
+    },
+    "output": {
+        "paraview": {
+            "file_name": "out.vtu",
+            "high_order_mesh": false,
+            "vismesh_rel_area": 1,
+            "surface": true
+        },
+        "log": {
+            "level": "warning"
+        },
+        "directory": "./opt_7"
+    }
+}

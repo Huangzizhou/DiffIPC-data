@@ -1,0 +1,79 @@
+{
+    "geometry": [
+        {
+            "mesh": "grid2.msh",
+            "transformation": {
+                "translation": [
+                    -0.02,
+                    -0.02,
+                    -0.02
+                ],
+                "scale": 0.004
+            },
+            "surface_selection": [
+                {
+                    "id": 2,
+                    "axis": "z",
+                    "position": 0.0199
+                },
+                {
+                    "id": 3,
+                    "axis": "-z",
+                    "position": -0.0199
+                }
+            ]
+        }
+    ],
+    "space": {
+        "discr_order": 2,
+        "advanced": {
+            "quadrature_order": 5
+        }
+    },
+    "solver": {
+        "linear": {
+            "solver": "Eigen::PardisoLDLT"
+        },
+        "nonlinear": {
+            "grad_norm": 1e-07
+        }
+    },
+    "boundary_conditions": {
+        "dirichlet_boundary": [
+            {
+                "id": 2,
+                "value": [
+                    0,
+                    0,
+                    -0.0029
+                ]
+            },
+            {
+                "id": 3,
+                "value": [
+                    0,
+                    0,
+                    0.0034
+                ]
+            }
+        ]
+    },
+    "materials": {
+        "type": "NeoHookean",
+        "E": 100000.0,
+        "nu": 0.05
+    },
+    "output": {
+        "log": {
+            "level": "info"
+        },
+        "directory": "result",
+        "paraview": {
+            "file_name": "debug.vtu",
+            "high_order_mesh": false,
+            "volume": true,
+            "surface": true,
+            "vismesh_rel_area": 1
+        }
+    }
+}

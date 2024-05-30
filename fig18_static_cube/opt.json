@@ -1,0 +1,51 @@
+{
+    "output": {
+        "log": {
+            "level": "trace"
+        }
+    },
+    "solver": {
+        "nonlinear": {
+            "line_search": {
+                "method": "Backtracking"
+            },
+            "solver": "L-BFGS",
+            "max_iterations": 100,
+            "grad_norm": 1e-5
+        }
+    },
+    "states": [
+        {
+            "path": "run.json"
+        }
+    ],
+    "variable_to_simulation": [
+        {
+            "type": "elastic",
+            "state": 0,
+            "composition": [
+                {
+                    "type": "exp"
+                },
+                {
+                    "type": "per-body-to-per-elem",
+                    "state": 0
+                }
+            ]
+        }
+    ],
+    "parameters": [
+        {
+            "initial": [10, 10],
+            "number": 2
+        }
+    ],
+    "functionals": [
+        {
+            "type": "node-target",
+            "state": 0,
+            "target_data_path": "data.txt",
+            "weight": 1e5
+        }
+    ]
+}

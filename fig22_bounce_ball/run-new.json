@@ -1,0 +1,130 @@
+{
+    "geometry": [
+        {
+            "mesh": "bar_4.msh",
+            "transformation": {
+                "translation": [
+                    0,
+                    0
+                ],
+                "scale": 1
+            },
+            "volume_selection": 1,
+            "n_refs": 0,
+            "advanced": {
+                "normalize_mesh": false
+            },
+            "surface_selection": [
+                {
+                    "id": 10,
+                    "axis": -1,
+                    "position": 0
+                }
+            ]
+        },
+        {
+            "mesh": "circle.msh",
+            "transformation": {
+                "translation": [
+                    3,
+                    0.9
+                ],
+                "scale": 1
+            },
+            "volume_selection": 2,
+            "n_refs": 0,
+            "advanced": {
+                "normalize_mesh": false
+            },
+            "surface_selection": [
+                {
+                    "id": 10,
+                    "axis": -1,
+                    "position": 0
+                }
+            ]
+        }
+    ],
+    "space": {
+        "discr_order": 1,
+        "advanced": {
+            "quadrature_order": 5
+        }
+    },
+    "time": {
+        "t0": 0,
+        "tend": 0.3,
+        "dt": 0.01
+    },
+    "contact": {
+        "enabled": true,
+        "friction_coefficient": 0
+    },
+    "solver": {
+        "linear": {
+            "solver": "Eigen::PardisoLDLT"
+        },
+        "nonlinear": {
+            "grad_norm": 1e-3
+        },
+        "contact": {
+            "barrier_stiffness": 10000.0
+        }
+    },
+    "boundary_conditions": {
+        "rhs": [
+            0,
+            9.81
+        ],
+        "dirichlet_boundary": [
+            {
+                "id": 10,
+                "value": [
+                    0,
+                    0
+                ]
+            }
+        ]
+    },
+    "initial_conditions": {
+        "velocity": [
+            {
+                "id": 2,
+                "value": [
+                    1,
+                    -10
+                ]
+            }
+        ]
+    },
+    "materials": [
+        {
+            "id": 1,
+            "E": 1000000000.0,
+            "nu": 0.48,
+            "rho": 1000,
+            "type": "NeoHookean"
+        },
+        {
+            "id": 2,
+            "E": 100000.0,
+            "nu": 0.48,
+            "rho": 1000,
+            "type": "NeoHookean"
+        }
+    ],
+    "output": {
+        "paraview": {
+            "high_order_mesh": false,
+            "surface": true,
+            "options": {
+                "material": true
+            },
+            "vismesh_rel_area": 1
+        },
+        "log": {
+            "level": "info"
+        },
+        "directory": "result"
+    }
+}

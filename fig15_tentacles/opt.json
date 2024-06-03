@@ -1,0 +1,74 @@
+{
+    "variable_to_simulation": [
+        {
+            "type": "initial",
+            "state": 0,
+            "composition": [{
+                "type": "append-values",
+                "values": [0, 1.5, 0]
+            },{
+                "type": "per-body-to-per-node",
+                "state": 0
+            },{
+                "type": "append-const",
+                "value": 0,
+                "size": 20688,
+                "start": 0
+            }]
+        }
+    ],
+    "parameters": [
+        {
+            "number": 3,
+            "initial": [0,0,0]
+        }
+    ],
+    "output": {
+        "log": {
+            "level": "trace"
+        }
+    },
+    "solver": {
+        "max_threads": 16,
+        "advanced": {
+            "solve_in_parallel": true
+        },
+        "nonlinear": {
+            "line_search": {
+                "method": "Backtracking"
+            },
+            "solver": "L-BFGS-B",
+            "grad_norm": 1e-5,
+            "box_constraints": {
+                "max_change": 0.5,
+                "bounds": [[-0.2,-2,-0.2], [0.2,0,0.2]]
+            },
+            "max_iterations": 10,
+            "L-BFGS-B": {
+                "history_size": 3
+            }
+        }
+    },
+    "functionals": [
+        {
+            "type": "transient_integral",
+            "state": 0,
+            "weight": 20,
+            "static_objective": 
+            {
+                "type": "center-target",
+                "state": 0,
+                "target_state": 1,
+                "volume_selection": [1]
+            }
+        }
+    ],
+    "states": [
+        {
+            "path": "state.json"
+        },
+        {
+            "path": "state-target.json"
+        }
+    ]
+}

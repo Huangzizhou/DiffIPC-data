@@ -1,0 +1,90 @@
+{
+    "space": {
+        "discr_order": 1,
+        "advanced": {
+            "quadrature_order": 5
+        }
+    },
+    "time": {
+        "tend": 0.5,
+        "dt": 0.005,
+        "integrator": {
+            "type": "BDF",
+            "steps": 1
+        }
+    },
+    "geometry": [
+        {
+            "mesh": "fluffy_ball.stl_.msh",
+            "enabled": true,
+            "volume_selection": 1,
+            "surface_selection": 1
+        },
+        {
+            "mesh": "fluffy_ball.stl_.msh",
+            "volume_selection": 2,
+            "surface_selection": 2,
+            "transformation": {
+                "translation": [0, -2.4, 0],
+                "rotation": [180,0,0]
+            }
+        }
+    ],
+    "contact": {
+        "enabled": true,
+        "dhat": 5e-3,
+        "use_convergent_formulation": true,
+        "friction_coefficient": 1
+    },
+    "boundary_conditions": {
+    },
+    "initial_conditions": {
+        "velocity": [
+            {
+                "id": 1,
+                "value": [0,-2,0]
+            },
+            {
+                "id": 2,
+                "value": [0,1.5,0]
+            }
+        ]
+    },
+    "materials": 
+        {
+            "E": 2e4,
+            "nu": 0.4,
+            "rho": 100,
+            "type": "NeoHookean"
+        },
+    "solver": {
+        "linear": {
+            "solver": "Eigen::PardisoLDLT"
+        },
+        "nonlinear": {
+            "grad_norm": 1e-4,
+            "max_iterations": 2000
+        },
+        "contact": {
+            "barrier_stiffness": 2e3
+        }
+    },
+    "output": {
+        "log": {
+            "level": "info"
+        },
+        "directory": "current",
+        "paraview": {
+            "skip_frame": 2,
+            "surface": true,
+            "volume": true,
+            "options": {
+                "velocity": true,
+                "acceleration": false,
+                "tensor_values": false,
+                "body_ids": true,
+                "material": false
+            }
+        }
+    }
+}

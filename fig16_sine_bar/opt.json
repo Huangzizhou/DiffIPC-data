@@ -1,0 +1,62 @@
+{
+    "output": {
+        "log": {
+            "level": "trace"
+        }
+    },
+    "solver": {
+        "max_threads": 16,
+        "nonlinear": {
+            "line_search": {
+                "method": "Backtracking"
+            },
+            "solver": "L-BFGS",
+            "max_iterations": 30,
+            "grad_norm": 1e-6,
+            "advanced": {
+                "apply_gradient_fd": "None"
+            }
+        }
+    },
+    "states": [
+        {
+            "path": "run-new.json"
+        }
+    ],
+    "variable_to_simulation": [
+        {
+            "type": "elastic",
+            "state": 0,
+            "composition": [
+                {
+                    "type": "exp",
+                    "from": -1,
+                    "to": -1
+                }
+            ]
+        }
+    ],
+    "parameters": [
+        {
+            "number": 2256
+        }
+    ],
+    "functionals": [
+        {
+            "type": "function-target",
+            "state": 0,
+            "weight": 1,
+            "target_function": "(y+0.3-0.7*sin(x))^2",
+            "target_function_gradient": ["2*(0.7*sin(x)-0.3-y)*0.7*cos(x)", "2*(y+0.3-0.7*sin(x))"],
+            "surface_selection": [2]
+        },
+        {
+            "type": "function-target",
+            "state": 0,
+            "weight": 1,
+            "target_function": "(y-0.3-0.7*sin(x))^2",
+            "target_function_gradient": ["2*(0.7*sin(x)+0.3-y)*0.7*cos(x)", "2*(y-0.3-0.7*sin(x))"],
+            "surface_selection": [4]
+        }
+    ]
+}

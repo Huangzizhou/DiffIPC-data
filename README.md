@@ -1,7 +1,30 @@
 # [Siggraph 2024] Differentiable solver for time-dependent deformation problems with contact
 A repository of the data and script used in our work, ["Differentiable solver for time-dependent deformation problems with contact" [Huang et al. 2024]](https://dl.acm.org/doi/10.1145/3657648).
 
-The scripts are input files for [PolyFEM](https://polyfem.github.io/). The simulation code is currently at [diffIPC](https://github.com/polyfem/polyfem/tree/diffIPC) branch.
+# Usage
+
+The source code is integrated in the open-source library [PolyFEM](https://polyfem.github.io/). To reproduce examples in this repository, minor changes were made in the branch [diffIPC](https://github.com/polyfem/polyfem/tree/diffIPC) to support specific features. See [PolyFEM Documentation](https://polyfem.github.io/polyfem/index.html) for compilation of PolyFEM and its JSON interface.
+
+
+## Tutorial
+
+Please refer to the [IPC guide](https://polyfem.github.io/tutorials/ipc_quick_start_guide/ipc_quick_start_guide/) for setting up a simulation of soft bodies with frictional contact in [PolyFEM](https://polyfem.github.io/), and [Trajectory Optimization](https://polyfem.github.io/tutorials/trajectory-optimization/trajectory-optimization/) page for setting up a trajectory optimization using the JSON interface.
+
+## Examples
+
+Each example folder includes one optimization JSON file for the configuration of the optimization, and one or more simulation JSON files for the configuration of the physics simulations.
+
+For non-shape optimizations, use command
+```
+~/polyfem/build/PolyFEM_bin -j opt.json --ns
+```
+to run the code. 
+
+Since shape optimizations (Fig 6 - 12) need remeshing when the mesh quality gets bad, a jupyter notebook is provided in each folder to organize the optimization. The python script calls the polyfem binary to run the shape optimization iteratively: Every time the mesh quality reaches a threshold, the polyfem program stops and the remeshing (Gmsh for 2D, MMG for 3D) to generates a volumetric mesh with better quality while preserving the surface shape.
+
+## Output
+
+The objective and its gradient norm at each iteration are reported in the log. The simulation results are exported as [VTK format](https://docs.vtk.org/en/latest/design_documents/VTKFileFormats.html) and can be visualized in [Paraview](https://www.paraview.org). The transient result files have the format of `step_{t}`, where `t` is the time step; optimization result files have the format of `opt_state_{i}_iter_{j}`, where `i` is the ID of the simulation (in the case where multiple simulations are included), `j` is the iteration number of the optimization.
 
 # Citation
 If you use this work/data. Please cite our paper:

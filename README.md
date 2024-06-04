@@ -20,7 +20,7 @@ For non-shape optimizations, use command
 ```
 to run the code. 
 
-Since shape optimizations (Fig 6 - 12) need remeshing when the mesh quality gets bad, a jupyter notebook is provided in each folder to organize the optimization. The python script calls the polyfem binary to run the shape optimization iteratively: Every time the mesh quality reaches a threshold, the polyfem program stops and the remeshing ([Gmsh](https://gmsh.info) for 2D, [MMG](https://github.com/MmgTools/mmg) for 3D) to generates a volumetric mesh with better quality while preserving the surface shape.
+Since shape optimizations (Fig 6 - 12) need remeshing when the mesh quality gets bad, a jupyter notebook is provided in each folder to organize the optimization. The python script calls the polyfem binary to run the shape optimization iteratively: Everytime the mesh quality reaches a low threshold (e.g. scaled Jacobian is 1e-7), the optimization program stops and the remeshing tool ([Gmsh](https://gmsh.info) for 2D, [MMG](https://github.com/MmgTools/mmg) for 3D) generates a volumetric mesh with better quality while preserving the surface shape.
 
 ## Output
 

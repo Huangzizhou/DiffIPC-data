@@ -1,5 +1,5 @@
 # [Siggraph 2024] Differentiable solver for time-dependent deformation problems with contact
-A repository of the data and script used in our work, ["Differentiable solver for time-dependent deformation problems with contact" [Huang et al. 2024]](https://dl.acm.org/doi/10.1145/3657648).
+A repository of the data and script used in our work, ["Differentiable solver for time-dependent deformation problems with contact" [Huang et al. 2024]](https://dl.acm.org/doi/10.1145/3657648). See [page](https://cims.nyu.edu/gcl/papers/2024-dpolyfem.mp4) for the video of examples in this repository.
 
 # Usage
 

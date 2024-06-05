@@ -1,0 +1,92 @@
+{
+    "geometry": [
+        {
+            "mesh": "slide.msh",
+            "is_obstacle": true,
+            "volume_selection": 3,
+            "surface_selection": 3
+        },
+        {
+            "mesh": "stanford-bunny.obj_.msh",
+            "transformation": {
+                "translation": [0.5, -0.13, -0.7],
+                "rotation": [0, 0, 0],
+                "rotation_mode": "xyz",
+                "scale": 4
+            },
+            "volume_selection": 1,
+            "surface_selection": 1
+        }
+    ],
+    "space": {
+        "discr_order": 1,
+        "advanced": {
+            "quadrature_order": 5
+        }
+    },
+    "time": {
+        "tend": 2,
+        "dt": 0.05
+    },
+    "contact": {
+        "enabled": true,
+        "friction_coefficient": 0.1
+    },
+    "solver": {
+        "linear": {
+            "solver": "Eigen::PardisoLDLT"
+        },
+        "nonlinear": {
+            "line_search": {
+                "method": "Backtracking"
+            },
+            "grad_norm": 1e-3
+        },
+        "contact": {
+            "barrier_stiffness": 1e4
+        }
+    },
+    "initial_conditions": {
+        "velocity": [
+            {
+                "id": 1,
+                "value": [0, 0, 2]
+            }
+        ]
+    },
+    "boundary_conditions": {
+        "rhs": [
+            0,
+            9.8,
+            0
+        ],
+        "dirichlet_boundary": [
+            {
+                "id": 3,
+                "value": [
+                    0,
+                    0,
+                    0
+                ]
+            }
+        ]
+    },
+    "materials": {
+        "type": "NeoHookean",
+        "E": 1e5,
+        "nu": 0.48,
+        "rho": 1000
+    },
+    "output": {
+        "directory": "result-target",
+        "paraview": {
+            "high_order_mesh": false,
+            "surface": true,
+            "volume": false,
+            "vismesh_rel_area": 1
+        },
+        "log": {
+            "level": "info"
+        }
+    }
+}

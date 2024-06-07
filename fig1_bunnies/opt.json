@@ -28,8 +28,8 @@
         "max_threads": 16,
         "nonlinear": {
             "line_search": {
-                "min_step_size": 0.125,
-                "method": "Backtracking"
+                "min_step_size": 1,
+                "method": "None"
             },
             "solver": "L-BFGS-B",
             "box_constraints": {
@@ -37,7 +37,7 @@
                 "bounds": [-5, 5]
             },
             "max_iterations": 20,
-            "grad_norm": 1e-4,
+            "grad_norm": 1e-3,
             "advanced": {
                 "apply_gradient_fd": "None",
                 "gradient_fd_eps": 1e-5
@@ -110,6 +110,66 @@
     "states": [
         {
             "path": "run.json"
+        }
+    ],
+    "stopping_conditions": [
+        {
+            "type": "plus-const",
+            "value": -0.005,
+            "objective": {
+                "type": "soft_constraint",
+                "soft_bound": [3.67854, 3.67854],
+                "objective": {
+                    "type": "divide",
+                    "objective": [{
+                        "type": "transient_integral",
+                        "state": 0,
+                        "weight": 1,
+                        "integral_type": "final",
+                        "static_objective": 
+                        {
+                            "type": "position",
+                            "dim": 0,
+                            "state": 0,
+                            "volume_selection": [3]
+                        }
+                    },
+                    {
+                        "type": "volume",
+                        "state": 0,
+                        "volume_selection": [3]
+                    }]
+                }
+            }
+        },
+        {
+            "type": "plus-const",
+            "value": -0.005,
+            "objective": {
+            "type": "soft_constraint",
+            "soft_bound": [0.137261, 0.137261],
+            "objective": {
+                "type": "divide",
+                "objective": [{
+                    "type": "transient_integral",
+                    "state": 0,
+                    "weight": 1,
+                    "integral_type": "final",
+                    "static_objective": 
+                    {
+                        "type": "position",
+                        "dim": 2,
+                        "state": 0,
+                        "volume_selection": [3]
+                    }
+                },
+                {
+                    "type": "volume",
+                    "state": 0,
+                    "volume_selection": [3]
+                }]
+            }
+            }
         }
     ]
 }

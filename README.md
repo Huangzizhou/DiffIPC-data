@@ -14,7 +14,7 @@ Please refer to the [IPC guide](https://polyfem.github.io/tutorials/ipc_quick_st
 
 Each example folder includes one optimization JSON file for the configuration of the optimization, and one or more simulation JSON files for the configuration of the physics simulations.
 
-For non-shape optimizations, use command
+For non-shape optimizations, `cd` to the example folder and use command
 ```
 ~/polyfem/build/PolyFEM_bin -j opt.json --ns
 ```

@@ -5,6 +5,11 @@ A repository of the data and script used in our work, ["Differentiable solver fo
 
 The source code is integrated in the open-source library [PolyFEM](https://polyfem.github.io/). To reproduce examples in this repository, minor changes were made in the branch [diffIPC](https://github.com/polyfem/polyfem/tree/diffIPC) to support specific features. See [PolyFEM Documentation](https://polyfem.github.io/polyfem/index.html) for compilation of PolyFEM and its JSON interface.
 
+## Environment
+
+The PolyFEM library automatically downloads its dependencies with cmake. The default linear solver in simulations is `Eigen::PardisoLDLT`, which requires [MKL](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl.html), it's not available on MacOS with Apple silicon, in which case `Eigen::AccelerateLDLT` is recommended.
+
+For shape optimizations, jupyter notebooks are provided to manage the optimizations with remeshing. The dependencies used in python are available in anaconda, with the only non-default library [meshio](https://github.com/conda-forge/meshio-feedstock).
 
 ## Tutorial
 
@@ -14,13 +19,13 @@ Please refer to the [IPC guide](https://polyfem.github.io/tutorials/ipc_quick_st
 
 Each example folder includes one optimization JSON file for the configuration of the optimization, and one or more simulation JSON files for the configuration of the physics simulations.
 
-For non-shape optimizations, `cd` to the example folder and use command
+For non-shape optimizations, `cd` to the example folder and use the command
 ```
 ~/polyfem/build/PolyFEM_bin -j opt.json --ns
 ```
 to run the code. 
 
-Since shape optimizations (Fig 6 - 12) need remeshing when the mesh quality gets bad, a jupyter notebook is provided in each folder to organize the optimization. The python script calls the polyfem binary to run the shape optimization iteratively: Everytime the mesh quality reaches a low threshold (e.g. scaled Jacobian is 1e-7), the optimization program stops and the remeshing tool ([Gmsh](https://gmsh.info) for 2D, [MMG](https://github.com/MmgTools/mmg) for 3D) generates a volumetric mesh with better quality while preserving the surface shape.
+Since shape optimizations (Fig 6 - 12) need remeshing when the mesh quality gets bad, a jupyter notebook is provided in each folder to organize the optimization. The python script calls the polyfem binary to run the shape optimization iteratively: Once the mesh quality reaches a low threshold (e.g. scaled Jacobian is 1e-7), the optimization program stops and the remeshing tool ([Gmsh](https://gmsh.info) for 2D, [MMG](https://github.com/MmgTools/mmg) for 3D) generates a volumetric mesh with better quality while preserving the surface shape.
 
 ## Output
 

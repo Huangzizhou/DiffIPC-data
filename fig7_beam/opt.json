@@ -1,0 +1,91 @@
+{
+    "parameters": [
+        {
+            "number": 6018
+        }
+    ],
+    "variable_to_simulation": [
+        {
+            "type": "shape",
+            "state": 0,
+            "composite_map_type": "boundary_excluding_surface",
+            "surface_selection": [
+                10,11,12
+            ],
+            "composition": [
+            ]
+        }
+    ],
+    "output": {
+        "log": {
+            "level": "trace"
+        }
+    },
+    "solver": {
+        "max_threads": 16,
+        "nonlinear": {
+            "line_search": {
+                "method": "Backtracking"
+            },
+            "solver": "L-BFGS",
+            "max_iterations": 400,
+            "grad_norm": 1e-4,
+            "advanced": {
+                "apply_gradient_fd": "None"
+            }
+        },
+        "advanced": {
+            "enable_slim": true
+        }
+    },
+    "functionals": [
+        {
+            "type": "power",
+            "power": 0.125,
+            "weight": 1e-2,
+            "print_energy": "stress",
+            "objective": {
+                "type": "stress_norm",
+                "state": 0,
+                "power": 8
+            }
+        },
+        {
+            "type": "soft_constraint",
+            "weight": 1e7,
+            "soft_bound": [0, 0.000166395829913909],
+            "objective": {
+                "type": "volume",
+                "state": 0,
+                "print_energy": "volume"
+            }
+        },
+        {
+            "type": "boundary_smoothing",
+            "weight": 2000,
+            "power": 4,
+            "state": 0,
+            "print_energy": "smoothing",
+            "surface_selection": [1],
+            "scale_invariant": false
+        }
+    ],
+    "states": [
+        {
+            "path": "run.json"
+        }
+    ],
+    "stopping_conditions": [
+        {
+            "type": "plus-const",
+            "objective":
+            {
+                "type": "min_jacobian",
+                "weight": 1,
+                "state": 0,
+                "print_energy": "Minus-Jacobian"
+            },
+            "value": -1e-10
+        }
+    ]
+}

@@ -1,0 +1,119 @@
+{
+    "geometry": [
+        {
+            "mesh": "beam_filled_10k_scaled.msh",
+            "volume_selection": 1,
+            "surface_selection": [
+                {
+                    "id": 10,
+                    "box": [
+                        [
+                            -0.0401,
+                            -0.0401,
+                            -1
+                        ],
+                        [
+                            0.0401,
+                            0.0401,
+                            -0.0099
+                        ]
+                    ]
+                },
+                {
+                    "id": 11,
+                    "axis": "-y",
+                    "position": -0.11
+                },
+                {
+                    "id": 12,
+                    "axis": "y",
+                    "position": 0.11
+                },
+                {
+                    "id": 1,
+                    "box": [
+                        [
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            1,
+                            1,
+                            1
+                        ]
+                    ],
+                    "relative": true
+                }
+            ],
+            "transformation": {
+                "scale": 1
+            }
+        }
+    ],
+    "space": {
+        "discr_order": 2,
+        "advanced": {
+            "quadrature_order": 5
+        }
+    },
+    "solver": {
+        "max_threads": 16,
+        "linear": {
+            "solver": "Eigen::PardisoLDLT"
+        },
+        "nonlinear": {
+            "grad_norm": 1e-06
+        }
+    },
+    "boundary_conditions": {
+        "dirichlet_boundary": [
+            {
+                "id": 10,
+                "value": [
+                    0,
+                    0,
+                    0
+                ]
+            }
+        ],
+        "neumann_boundary": [
+            {
+                "id": 11,
+                "value": [
+                    0,
+                    0,
+                    -20
+                ]
+            },
+            {
+                "id": 12,
+                "value": [
+                    0,
+                    0,
+                    -20
+                ]
+            }
+        ],
+        "rhs": [
+            0,
+            0,
+            0
+        ]
+    },
+    "materials": {
+        "type": "NeoHookean",
+        "E": 3500000000.0,
+        "nu": 0.36,
+        "rho": 1240
+    },
+    "output": {
+        "paraview": {
+            "file_name": "debug.vtu",
+            "high_order_mesh": false,
+            "vismesh_rel_area": 1,
+            "surface": true
+        },
+        "directory": "./opt_46"
+    }
+}

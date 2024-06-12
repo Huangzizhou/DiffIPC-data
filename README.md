@@ -7,7 +7,7 @@ The source code is integrated in the open-source library [PolyFEM](https://polyf
 
 ## Environment
 
-The PolyFEM library automatically downloads its dependencies with cmake. The default linear solver in simulations is `Eigen::PardisoLDLT`, which requires [MKL](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl.html), it's not available on MacOS with Apple silicon, in which case `Eigen::AccelerateLDLT` is recommended.
+The PolyFEM library automatically downloads its dependencies with cmake. The default linear solver in simulations is `Eigen::PardisoLDLT`, which requires [MKL](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl.html), it's not available on MacOS with Apple silicon, in which case `Eigen::AccelerateLDLT` or `Eigen::CholmodSimplicialLDLT` are recommended.
 
 For shape optimizations, jupyter notebooks are provided to manage the optimizations with remeshing. The dependencies used in python are available in anaconda, with the only non-default library [meshio](https://github.com/conda-forge/meshio-feedstock).
 

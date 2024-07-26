@@ -15,9 +15,9 @@ For shape optimizations, jupyter notebooks are provided to manage the optimizati
 
 Please refer to the [IPC guide](https://polyfem.github.io/tutorials/ipc_quick_start_guide/ipc_quick_start_guide/) for setting up a simulation of soft bodies with frictional contact in [PolyFEM](https://polyfem.github.io/), and [Trajectory Optimization](https://polyfem.github.io/tutorials/trajectory-optimization/trajectory-optimization/) page for setting up a trajectory optimization using the JSON interface.
 
-## Examples
+## Run examples with JSON
 
-Each example folder includes one optimization JSON file for the configuration of the optimization, and one or more simulation JSON files for the configuration of the physics simulations.
+Each example folder in `./json_scripts` includes one optimization JSON file for the configuration of the optimization, and one or more simulation JSON files for the configuration of the physics simulations.
 
 For non-shape optimizations, `cd` to the example folder and use the command
 ```
@@ -26,6 +26,14 @@ For non-shape optimizations, `cd` to the example folder and use the command
 to run the code. 
 
 Since shape optimizations (Fig 6 - 12) need remeshing when the mesh quality gets bad, a jupyter notebook is provided in each folder to organize the optimization. The python script calls the polyfem binary to run the shape optimization iteratively: Once the mesh quality reaches a low threshold (e.g. scaled Jacobian is 1e-7), the optimization program stops and the remeshing tool ([Gmsh](https://gmsh.info) for 2D, [MMG](https://github.com/MmgTools/mmg) for 3D) generates a volumetric mesh with better quality while preserving the surface shape.
+
+## Run examples with Python
+
+Examples in `./python_scripts` show how to use the python binding of PolyFEM to set up an optimization problem. The Python binding of PolyFEM can be found on this [page](https://github.com/Huangzizhou/polyfem-python/tree/update).
+
+The [differentiable simulator](./python_scripts/src/diffSimulator.py) is wrapped into a Pytorch autograd class, which can be integrated into a training pipeline and be used as a differentiable computing block to construct your own loss functions.
+
+The Python binding of PolyFEM is under construction, more examples are coming soon!
 
 ## Output
 

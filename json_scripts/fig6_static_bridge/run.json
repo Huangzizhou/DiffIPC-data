@@ -95,7 +95,11 @@
     "solver": {
         "max_threads": 16,
         "linear": {
-            "solver": ["Eigen::PardisoLDLT", "Eigen::AccelerateLDLT", "Eigen::SimplicialLDLT"]
+            "solver": [
+                "Eigen::PardisoLDLT",
+                "Eigen::AccelerateLDLT",
+                "Eigen::SimplicialLDLT"
+            ]
         }
     },
     "boundary_conditions": {
@@ -137,6 +141,6 @@
         "log": {
             "level": "warning"
         },
-        "directory": "./opt_7"
+        "directory": "./opt_1"
     }
 }

@@ -67,7 +67,7 @@ def boundary_loop(f):
 # input_path = 'before_remesh_iter40_mesh1.obj'
 # output_path = 'out.msh'
 # geo_path = "input.geo"
-gmsh_exe = 'gmsh'
+gmsh_exe = '/Applications/Gmsh.app/Contents/MacOS/gmsh'
 
 parser = argparse.ArgumentParser()
 parser.add_argument("input", type=str)

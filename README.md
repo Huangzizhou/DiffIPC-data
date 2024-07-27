@@ -1,4 +1,7 @@
 # [Siggraph 2024] Differentiable solver for time-dependent deformation problems with contact
+
+![This is the caption\label{mylabel}](./img/teaser.png)
+
 A repository of the data and script used in our work, ["Differentiable solver for time-dependent deformation problems with contact" [Huang et al. 2024]](https://cims.nyu.edu/~zh1476/research/diffipc.html). See [page](https://cims.nyu.edu/gcl/papers/2024-dpolyfem.mp4) for the video of examples in this repository.
 
 # Usage
@@ -33,7 +36,7 @@ Examples in `./python_scripts` show how to use the Python binding of PolyFEM to 
 
 The [differentiable simulator](./python_scripts/src/diffSimulator.py) is wrapped into a Pytorch autograd class, which can be integrated into a training pipeline and be used as a differentiable computing block to construct your own loss functions.
 
-The Python binding of PolyFEM is under construction, more examples are coming soon!
+The four examples of running optimization with python binding include [shape optimization](./python_scripts/fig6_static_bridge/), [material optimization](./python_scripts/fig16_sine_bar/), [initial velocity optimization](./python_scripts/fig14_puzzle_piece/), and [friction coefficient optimization](./python_scripts/fig21_friction_bunny/). The Python binding of PolyFEM is under construction, more examples are coming soon!
 
 ## Output
 

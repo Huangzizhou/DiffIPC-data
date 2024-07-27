@@ -34,7 +34,7 @@ Since shape optimizations (Fig 6 - 12) need remeshing when the mesh quality gets
 
 Examples in `./python_scripts` show how to use the Python binding of PolyFEM to set up an optimization problem. The Python binding of PolyFEM can be found on this [page](https://github.com/Huangzizhou/polyfem-python).
 
-The [differentiable simulator](./python_scripts/src/diffSimulator.py) is wrapped into a Pytorch autograd class, which can be integrated into a training pipeline and be used as a differentiable computing block to construct your own loss functions.
+The differentiable simulator is wrapped into a Pytorch autograd class, which can be integrated into a training pipeline and be used as a differentiable computing block to construct your own loss functions.
 
 The four examples of running optimization with python binding include [shape optimization](./python_scripts/fig6_static_bridge/), [material optimization](./python_scripts/fig16_sine_bar/), [initial velocity optimization](./python_scripts/fig14_puzzle_piece/), and [friction coefficient optimization](./python_scripts/fig21_friction_bunny/). The Python binding of PolyFEM is under construction, more examples are coming soon!
 

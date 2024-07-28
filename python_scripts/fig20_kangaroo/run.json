@@ -1,0 +1,113 @@
+{
+    "geometry": [
+        {
+            "mesh": "square.obj",
+            "transformation": {
+                "translation": [
+                    0,
+                    0
+                ],
+                "rotation": 0,
+                "scale": [
+                    3,
+                    0.02
+                ]
+            },
+            "volume_selection": 3,
+            "surface_selection": 3,
+            "n_refs": 0,
+            "advanced": {
+                "normalize_mesh": false
+            }
+        },
+        {
+            "mesh": "kangaroo-coarse.msh",
+            "transformation": {
+                "translation": [
+                    -1.5,
+                    0.1
+                ],
+                "rotation": 0,
+                "scale": 0.25
+            },
+            "volume_selection": 1,
+            "surface_selection": 1,
+            "n_refs": 0,
+            "advanced": {
+                "normalize_mesh": false
+            }
+        }
+    ],
+    "space": {
+        "discr_order": 1,
+        "advanced": {
+            "quadrature_order": 5
+        }
+    },
+    "time": {
+        "tend": 0.6,
+        "dt": 0.02
+    },
+    "contact": {
+        "enabled": true,
+        "friction_coefficient": 0.5
+    },
+    "solver": {
+        "linear": {
+            "solver": ["Eigen::PardisoLDLT", "Eigen::AccelerateLDLT", "Eigen::SimplicialLDLT"]
+        },
+        "nonlinear": {
+            "grad_norm": 1e-6
+        },
+        "contact": {
+            "barrier_stiffness": 100000.0
+        }
+    },
+    "boundary_conditions": {
+        "rhs": [
+            0,
+            9.8
+        ],
+        "dirichlet_boundary": [
+            {
+                "id": 3,
+                "value": [
+                    0,
+                    0
+                ]
+            }
+        ]
+    },
+    "initial_conditions": {
+        "velocity": [
+            {
+                "id": 1,
+                "value": [
+                    3.2,
+                    1
+                ]
+            }
+        ]
+    },
+    "materials": {
+        "type": "NeoHookean",
+        "E": 3e6,
+        "nu": 0.5,
+        "rho": 100
+    },
+    "output": {
+        "directory": "result",
+        "log": {
+            "level": "info"
+        },
+        "paraview": {
+            "file_name": "sim.pvd",
+            "high_order_mesh": false,
+            "options": {
+                "body_ids": true,
+                "material": true
+            },
+            "vismesh_rel_area": 1
+        }
+    }
+}

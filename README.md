@@ -32,7 +32,10 @@ Since shape optimizations (Fig 6 - 12) need remeshing when the mesh quality gets
 
 ## Run examples with Python
 
-Examples in `./python_scripts` show how to use the Python binding of PolyFEM to set up an optimization problem. The Python binding of PolyFEM can be found on this [page](https://github.com/Huangzizhou/polyfem-python).
+Examples in `./python_scripts` show how to use the Python binding of PolyFEM to set up an optimization problem. The Python binding of PolyFEM can be found on this [page](https://github.com/Huangzizhou/polyfem-python). Extra libraries needed can be installed via conda:
+```
+conda install igl conda-forge::meshio
+```
 
 The differentiable simulator is wrapped into a Pytorch autograd class, which can be integrated into a training pipeline and be used as a differentiable computing block to construct your own loss functions.
 

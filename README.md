@@ -6,7 +6,7 @@ A repository of the data and script used in our work, ["Differentiable solver fo
 
 # Usage
 
-The source code is integrated in the open-source library [PolyFEM](https://polyfem.github.io/). To reproduce examples in this repository, minor changes were made in the branch [diffIPC](https://github.com/polyfem/polyfem/tree/diffIPC) to support specific features. See [PolyFEM Documentation](https://polyfem.github.io/polyfem/index.html) for compilation of PolyFEM and its JSON interface.
+The source code is integrated in the open-source library [PolyFEM](https://polyfem.github.io/). See [PolyFEM Documentation](https://polyfem.github.io/polyfem/index.html) for compilation of PolyFEM and its JSON interface.
 
 ## Environment
 

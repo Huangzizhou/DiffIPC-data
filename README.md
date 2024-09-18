@@ -45,6 +45,14 @@ The four examples of running optimization with python binding include [shape opt
 
 The objective and its gradient norm at each iteration are reported in the log. The simulation results are exported as [VTK format](https://docs.vtk.org/en/latest/design_documents/VTKFileFormats.html) and can be visualized in [Paraview](https://www.paraview.org). The transient result files have the format of `step_{t}`, where `t` is the time step; optimization result files have the format of `opt_state_{i}_iter_{j}`, where `i` is the ID of the simulation (in the case where multiple simulations are included), `j` is the iteration number of the optimization.
 
+## Known issues
+
+1. Shape optimizations cannot have obstacles in the simulations. To get around, create a volumetric mesh of the obstacle and apply Dirichlet boundary conditions on the obstacle surface.
+
+2. Shape derivatives is not correct on nodes with nonzero Neumann boundary conditions. One can still set Neumann boundary conditions on the shape, but the shape of the surface parts with Neumann boundary conditions should be fixed.
+
+3. Density (or mass) and force magnitude (i.e. Neumann boundary condition) optimizations are not supported.
+
 # Citation
 If you use this work/data. Please cite our paper:
 

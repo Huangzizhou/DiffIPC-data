@@ -49,9 +49,9 @@ The objective and its gradient norm at each iteration are reported in the log. T
 
 1. Shape optimizations cannot have obstacles in the simulations. To get around, create a volumetric mesh of the obstacle and apply Dirichlet boundary conditions on the obstacle surface.
 
-2. Shape derivatives is not correct on nodes with nonzero Neumann boundary conditions. One can still set Neumann boundary conditions on the shape, but the shape of the surface parts with Neumann boundary conditions should be fixed.
+2. Shape derivatives is not available on nodes with nonzero Neumann boundary conditions. One can still set Neumann boundary conditions on the shape, but the surface parts with Neumann boundary conditions should be fixed.
 
-3. Density (or mass) and force magnitude (i.e. Neumann boundary condition) optimizations are not supported.
+3. Density (or mass) and force magnitude (i.e. Neumann boundary condition) optimizations are not supported yet.
 
 # Citation
 If you use this work/data. Please cite our paper:

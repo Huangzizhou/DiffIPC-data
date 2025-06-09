@@ -2,7 +2,7 @@
 
 ![This is the caption\label{mylabel}](./img/teaser.png)
 
-A repository of the data and script used in our work, ["Differentiable solver for time-dependent deformation problems with contact" [Huang et al. 2024]](https://cims.nyu.edu/~zh1476/research/diffipc.html). See [page](https://cims.nyu.edu/gcl/papers/2024-dpolyfem.mp4) for the video of examples in this repository.
+A repository of the data and script used in our work, ["Differentiable solver for time-dependent deformation problems with contact" [Huang et al. 2024]](https://huangzizhou.github.io/research/diffipc.html). See [page](https://cims.nyu.edu/gcl/papers/2024-dpolyfem.mp4) for the video of examples in this repository.
 
 # Usage
 
